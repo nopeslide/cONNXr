@@ -1,594 +1,580 @@
-#ifndef TEST_COMMON_OPERATORS_H
-#define TEST_COMMON_OPERATORS_H
+#ifndef ONNX_BACKEND_OPERATORS_H
+#define ONNX_BACKEND_OPERATORS_H
 
-#include "../../src/trace.h"
-#include "../../src/inference.h"
-#include "../../src/utils.h"
-#include "../../src/operators/operators.h"
-#include "../test_utils.h"
+#define PROTOTYPE_TEST_OPERATOR(name) void test_ ## name (void);
 
-int init_onnxBackendSuite(void)
-{
-  return 0;
-}
-
-int clean_onnxBackendSuite(void)
-{
-  return 0;
-}
-
-void test_abs(void){testOperator("test_abs");}
-void test_acos(void){testOperator("test_acos");}
-void test_acos_example(void){testOperator("test_acos_example");}
-void test_acosh(void){testOperator("test_acosh");}
-void test_acosh_example(void){testOperator("test_acosh_example");}
-void test_add(void){testOperator("test_add");}
-void test_add_bcast(void){testOperator("test_add_bcast");}
-void test_and2d(void){testOperator("test_and2d");}
-void test_and3d(void){testOperator("test_and3d");}
-void test_and4d(void){testOperator("test_and4d");}
-void test_and_bcast3v1d(void){testOperator("test_and_bcast3v1d");}
-void test_and_bcast3v2d(void){testOperator("test_and_bcast3v2d");}
-void test_and_bcast4v2d(void){testOperator("test_and_bcast4v2d");}
-void test_and_bcast4v3d(void){testOperator("test_and_bcast4v3d");}
-void test_and_bcast4v4d(void){testOperator("test_and_bcast4v4d");}
-void test_argmax_default_axis_example(void){testOperator("test_argmax_default_axis_example");}
-void test_argmax_default_axis_example_select_last_index(void){testOperator("test_argmax_default_axis_example_select_last_index");}
-void test_argmax_default_axis_random(void){testOperator("test_argmax_default_axis_random");}
-void test_argmax_default_axis_random_select_last_index(void){testOperator("test_argmax_default_axis_random_select_last_index");}
-void test_argmax_keepdims_example(void){testOperator("test_argmax_keepdims_example");}
-void test_argmax_keepdims_example_select_last_index(void){testOperator("test_argmax_keepdims_example_select_last_index");}
-void test_argmax_keepdims_random(void){testOperator("test_argmax_keepdims_random");}
-void test_argmax_keepdims_random_select_last_index(void){testOperator("test_argmax_keepdims_random_select_last_index");}
-void test_argmax_negative_axis_keepdims_example(void){testOperator("test_argmax_negative_axis_keepdims_example");}
-void test_argmax_negative_axis_keepdims_example_select_last_index(void){testOperator("test_argmax_negative_axis_keepdims_example_select_last_index");}
-void test_argmax_negative_axis_keepdims_random(void){testOperator("test_argmax_negative_axis_keepdims_random");}
-void test_argmax_negative_axis_keepdims_random_select_last_index(void){testOperator("test_argmax_negative_axis_keepdims_random_select_last_index");}
-void test_argmax_no_keepdims_example(void){testOperator("test_argmax_no_keepdims_example");}
-void test_argmax_no_keepdims_example_select_last_index(void){testOperator("test_argmax_no_keepdims_example_select_last_index");}
-void test_argmax_no_keepdims_random(void){testOperator("test_argmax_no_keepdims_random");}
-void test_argmax_no_keepdims_random_select_last_index(void){testOperator("test_argmax_no_keepdims_random_select_last_index");}
-void test_argmin_default_axis_example(void){testOperator("test_argmin_default_axis_example");}
-void test_argmin_default_axis_example_select_last_index(void){testOperator("test_argmin_default_axis_example_select_last_index");}
-void test_argmin_default_axis_random(void){testOperator("test_argmin_default_axis_random");}
-void test_argmin_default_axis_random_select_last_index(void){testOperator("test_argmin_default_axis_random_select_last_index");}
-void test_argmin_keepdims_example(void){testOperator("test_argmin_keepdims_example");}
-void test_argmin_keepdims_example_select_last_index(void){testOperator("test_argmin_keepdims_example_select_last_index");}
-void test_argmin_keepdims_random(void){testOperator("test_argmin_keepdims_random");}
-void test_argmin_keepdims_random_select_last_index(void){testOperator("test_argmin_keepdims_random_select_last_index");}
-void test_argmin_negative_axis_keepdims_example(void){testOperator("test_argmin_negative_axis_keepdims_example");}
-void test_argmin_negative_axis_keepdims_example_select_last_index(void){testOperator("test_argmin_negative_axis_keepdims_example_select_last_index");}
-void test_argmin_negative_axis_keepdims_random(void){testOperator("test_argmin_negative_axis_keepdims_random");}
-void test_argmin_negative_axis_keepdims_random_select_last_index(void){testOperator("test_argmin_negative_axis_keepdims_random_select_last_index");}
-void test_argmin_no_keepdims_example(void){testOperator("test_argmin_no_keepdims_example");}
-void test_argmin_no_keepdims_example_select_last_index(void){testOperator("test_argmin_no_keepdims_example_select_last_index");}
-void test_argmin_no_keepdims_random(void){testOperator("test_argmin_no_keepdims_random");}
-void test_argmin_no_keepdims_random_select_last_index(void){testOperator("test_argmin_no_keepdims_random_select_last_index");}
-void test_asin(void){testOperator("test_asin");}
-void test_asin_example(void){testOperator("test_asin_example");}
-void test_asinh(void){testOperator("test_asinh");}
-void test_asinh_example(void){testOperator("test_asinh_example");}
-void test_atan(void){testOperator("test_atan");}
-void test_atan_example(void){testOperator("test_atan_example");}
-void test_atanh(void){testOperator("test_atanh");}
-void test_atanh_example(void){testOperator("test_atanh_example");}
-void test_averagepool_1d_default(void){testOperator("test_averagepool_1d_default");}
-void test_averagepool_2d_ceil(void){testOperator("test_averagepool_2d_ceil");}
-void test_averagepool_2d_default(void){testOperator("test_averagepool_2d_default");}
-void test_averagepool_2d_pads(void){testOperator("test_averagepool_2d_pads");}
-void test_averagepool_2d_pads_count_include_pad(void){testOperator("test_averagepool_2d_pads_count_include_pad");}
-void test_averagepool_2d_precomputed_pads(void){testOperator("test_averagepool_2d_precomputed_pads");}
-void test_averagepool_2d_precomputed_pads_count_include_pad(void){testOperator("test_averagepool_2d_precomputed_pads_count_include_pad");}
-void test_averagepool_2d_precomputed_same_upper(void){testOperator("test_averagepool_2d_precomputed_same_upper");}
-void test_averagepool_2d_precomputed_strides(void){testOperator("test_averagepool_2d_precomputed_strides");}
-void test_averagepool_2d_same_lower(void){testOperator("test_averagepool_2d_same_lower");}
-void test_averagepool_2d_same_upper(void){testOperator("test_averagepool_2d_same_upper");}
-void test_averagepool_2d_strides(void){testOperator("test_averagepool_2d_strides");}
-void test_averagepool_3d_default(void){testOperator("test_averagepool_3d_default");}
-void test_basic_conv_with_padding(void){testOperator("test_basic_conv_with_padding");}
-void test_basic_conv_without_padding(void){testOperator("test_basic_conv_without_padding");}
-void test_basic_convinteger(void){testOperator("test_basic_convinteger");}
-void test_batchnorm_epsilon(void){testOperator("test_batchnorm_epsilon");}
-void test_batchnorm_example(void){testOperator("test_batchnorm_example");}
-void test_bitshift_left_uint16(void){testOperator("test_bitshift_left_uint16");}
-void test_bitshift_left_uint32(void){testOperator("test_bitshift_left_uint32");}
-void test_bitshift_left_uint64(void){testOperator("test_bitshift_left_uint64");}
-void test_bitshift_left_uint8(void){testOperator("test_bitshift_left_uint8");}
-void test_bitshift_right_uint16(void){testOperator("test_bitshift_right_uint16");}
-void test_bitshift_right_uint32(void){testOperator("test_bitshift_right_uint32");}
-void test_bitshift_right_uint64(void){testOperator("test_bitshift_right_uint64");}
-void test_bitshift_right_uint8(void){testOperator("test_bitshift_right_uint8");}
-void test_cast_DOUBLE_to_FLOAT(void){testOperator("test_cast_DOUBLE_to_FLOAT");}
-void test_cast_DOUBLE_to_FLOAT16(void){testOperator("test_cast_DOUBLE_to_FLOAT16");}
-void test_cast_FLOAT16_to_DOUBLE(void){testOperator("test_cast_FLOAT16_to_DOUBLE");}
-void test_cast_FLOAT16_to_FLOAT(void){testOperator("test_cast_FLOAT16_to_FLOAT");}
-void test_cast_FLOAT_to_DOUBLE(void){testOperator("test_cast_FLOAT_to_DOUBLE");}
-void test_cast_FLOAT_to_FLOAT16(void){testOperator("test_cast_FLOAT_to_FLOAT16");}
-void test_cast_FLOAT_to_STRING(void){testOperator("test_cast_FLOAT_to_STRING");}
-void test_cast_STRING_to_FLOAT(void){testOperator("test_cast_STRING_to_FLOAT");}
-void test_ceil(void){testOperator("test_ceil");}
-void test_ceil_example(void){testOperator("test_ceil_example");}
-void test_clip(void){testOperator("test_clip");}
-void test_clip_default_inbounds(void){testOperator("test_clip_default_inbounds");}
-void test_clip_default_max(void){testOperator("test_clip_default_max");}
-void test_clip_default_min(void){testOperator("test_clip_default_min");}
-void test_clip_example(void){testOperator("test_clip_example");}
-void test_clip_inbounds(void){testOperator("test_clip_inbounds");}
-void test_clip_outbounds(void){testOperator("test_clip_outbounds");}
-void test_clip_splitbounds(void){testOperator("test_clip_splitbounds");}
-void test_compress_0(void){testOperator("test_compress_0");}
-void test_compress_1(void){testOperator("test_compress_1");}
-void test_compress_default_axis(void){testOperator("test_compress_default_axis");}
-void test_compress_negative_axis(void){testOperator("test_compress_negative_axis");}
-void test_concat_1d_axis_0(void){testOperator("test_concat_1d_axis_0");}
-void test_concat_1d_axis_negative_1(void){testOperator("test_concat_1d_axis_negative_1");}
-void test_concat_2d_axis_0(void){testOperator("test_concat_2d_axis_0");}
-void test_concat_2d_axis_1(void){testOperator("test_concat_2d_axis_1");}
-void test_concat_2d_axis_negative_1(void){testOperator("test_concat_2d_axis_negative_1");}
-void test_concat_2d_axis_negative_2(void){testOperator("test_concat_2d_axis_negative_2");}
-void test_concat_3d_axis_0(void){testOperator("test_concat_3d_axis_0");}
-void test_concat_3d_axis_1(void){testOperator("test_concat_3d_axis_1");}
-void test_concat_3d_axis_2(void){testOperator("test_concat_3d_axis_2");}
-void test_concat_3d_axis_negative_1(void){testOperator("test_concat_3d_axis_negative_1");}
-void test_concat_3d_axis_negative_2(void){testOperator("test_concat_3d_axis_negative_2");}
-void test_concat_3d_axis_negative_3(void){testOperator("test_concat_3d_axis_negative_3");}
-void test_constant(void){testOperator("test_constant");}
-void test_constant_pad(void){testOperator("test_constant_pad");}
-void test_constantofshape_float_ones(void){testOperator("test_constantofshape_float_ones");}
-void test_constantofshape_int_zeros(void){testOperator("test_constantofshape_int_zeros");}
-void test_conv_with_strides_and_asymmetric_padding(void){testOperator("test_conv_with_strides_and_asymmetric_padding");}
-void test_conv_with_strides_no_padding(void){testOperator("test_conv_with_strides_no_padding");}
-void test_conv_with_strides_padding(void){testOperator("test_conv_with_strides_padding");}
-void test_convinteger_with_padding(void){testOperator("test_convinteger_with_padding");}
-void test_convtranspose(void){testOperator("test_convtranspose");}
-void test_convtranspose_1d(void){testOperator("test_convtranspose_1d");}
-void test_convtranspose_3d(void){testOperator("test_convtranspose_3d");}
-void test_convtranspose_dilations(void){testOperator("test_convtranspose_dilations");}
-void test_convtranspose_kernel_shape(void){testOperator("test_convtranspose_kernel_shape");}
-void test_convtranspose_output_shape(void){testOperator("test_convtranspose_output_shape");}
-void test_convtranspose_pad(void){testOperator("test_convtranspose_pad");}
-void test_convtranspose_pads(void){testOperator("test_convtranspose_pads");}
-void test_convtranspose_with_kernel(void){testOperator("test_convtranspose_with_kernel");}
-void test_cos(void){testOperator("test_cos");}
-void test_cos_example(void){testOperator("test_cos_example");}
-void test_cosh(void){testOperator("test_cosh");}
-void test_cosh_example(void){testOperator("test_cosh_example");}
-void test_cumsum_1d(void){testOperator("test_cumsum_1d");}
-void test_cumsum_1d_exclusive(void){testOperator("test_cumsum_1d_exclusive");}
-void test_cumsum_1d_reverse(void){testOperator("test_cumsum_1d_reverse");}
-void test_cumsum_1d_reverse_exclusive(void){testOperator("test_cumsum_1d_reverse_exclusive");}
-void test_cumsum_2d_axis_0(void){testOperator("test_cumsum_2d_axis_0");}
-void test_cumsum_2d_axis_1(void){testOperator("test_cumsum_2d_axis_1");}
-void test_cumsum_2d_negative_axis(void){testOperator("test_cumsum_2d_negative_axis");}
-void test_depthtospace_crd_mode(void){testOperator("test_depthtospace_crd_mode");}
-void test_depthtospace_crd_mode_example(void){testOperator("test_depthtospace_crd_mode_example");}
-void test_depthtospace_dcr_mode(void){testOperator("test_depthtospace_dcr_mode");}
-void test_depthtospace_example(void){testOperator("test_depthtospace_example");}
-void test_dequantizelinear(void){testOperator("test_dequantizelinear");}
-void test_det_2d(void){testOperator("test_det_2d");}
-void test_det_nd(void){testOperator("test_det_nd");}
-void test_div(void){testOperator("test_div");}
-void test_div_bcast(void){testOperator("test_div_bcast");}
-void test_div_example(void){testOperator("test_div_example");}
-void test_dropout_default(void){testOperator("test_dropout_default");}
-void test_dropout_random(void){testOperator("test_dropout_random");}
-void test_dynamicquantizelinear(void){testOperator("test_dynamicquantizelinear");}
-void test_dynamicquantizelinear_expanded(void){testOperator("test_dynamicquantizelinear_expanded");}
-void test_dynamicquantizelinear_max_adjusted(void){testOperator("test_dynamicquantizelinear_max_adjusted");}
-void test_dynamicquantizelinear_max_adjusted_expanded(void){testOperator("test_dynamicquantizelinear_max_adjusted_expanded");}
-void test_dynamicquantizelinear_min_adjusted(void){testOperator("test_dynamicquantizelinear_min_adjusted");}
-void test_dynamicquantizelinear_min_adjusted_expanded(void){testOperator("test_dynamicquantizelinear_min_adjusted_expanded");}
-void test_edge_pad(void){testOperator("test_edge_pad");}
-void test_elu(void){testOperator("test_elu");}
-void test_elu_default(void){testOperator("test_elu_default");}
-void test_elu_example(void){testOperator("test_elu_example");}
-void test_equal(void){testOperator("test_equal");}
-void test_equal_bcast(void){testOperator("test_equal_bcast");}
-void test_erf(void){testOperator("test_erf");}
-void test_exp(void){testOperator("test_exp");}
-void test_exp_example(void){testOperator("test_exp_example");}
-void test_expand_dim_changed(void){testOperator("test_expand_dim_changed");}
-void test_expand_dim_unchanged(void){testOperator("test_expand_dim_unchanged");}
-void test_eyelike_populate_off_main_diagonal(void){testOperator("test_eyelike_populate_off_main_diagonal");}
-void test_eyelike_with_dtype(void){testOperator("test_eyelike_with_dtype");}
-void test_eyelike_without_dtype(void){testOperator("test_eyelike_without_dtype");}
-void test_flatten_axis0(void){testOperator("test_flatten_axis0");}
-void test_flatten_axis1(void){testOperator("test_flatten_axis1");}
-void test_flatten_axis2(void){testOperator("test_flatten_axis2");}
-void test_flatten_axis3(void){testOperator("test_flatten_axis3");}
-void test_flatten_default_axis(void){testOperator("test_flatten_default_axis");}
-void test_flatten_negative_axis1(void){testOperator("test_flatten_negative_axis1");}
-void test_flatten_negative_axis2(void){testOperator("test_flatten_negative_axis2");}
-void test_flatten_negative_axis3(void){testOperator("test_flatten_negative_axis3");}
-void test_flatten_negative_axis4(void){testOperator("test_flatten_negative_axis4");}
-void test_floor(void){testOperator("test_floor");}
-void test_floor_example(void){testOperator("test_floor_example");}
-void test_gather_0(void){testOperator("test_gather_0");}
-void test_gather_1(void){testOperator("test_gather_1");}
-void test_gather_elements_0(void){testOperator("test_gather_elements_0");}
-void test_gather_elements_1(void){testOperator("test_gather_elements_1");}
-void test_gather_elements_negative_indices(void){testOperator("test_gather_elements_negative_indices");}
-void test_gather_negative_indices(void){testOperator("test_gather_negative_indices");}
-void test_gathernd_example_float32(void){testOperator("test_gathernd_example_float32");}
-void test_gathernd_example_int32(void){testOperator("test_gathernd_example_int32");}
-void test_gemm_all_attributes(void){testOperator("test_gemm_all_attributes");}
-void test_gemm_alpha(void){testOperator("test_gemm_alpha");}
-void test_gemm_beta(void){testOperator("test_gemm_beta");}
-void test_gemm_default_matrix_bias(void){testOperator("test_gemm_default_matrix_bias");}
-void test_gemm_default_no_bias(void){testOperator("test_gemm_default_no_bias");}
-void test_gemm_default_scalar_bias(void){testOperator("test_gemm_default_scalar_bias");}
-void test_gemm_default_single_elem_vector_bias(void){testOperator("test_gemm_default_single_elem_vector_bias");}
-void test_gemm_default_vector_bias(void){testOperator("test_gemm_default_vector_bias");}
-void test_gemm_default_zero_bias(void){testOperator("test_gemm_default_zero_bias");}
-void test_gemm_transposeA(void){testOperator("test_gemm_transposeA");}
-void test_gemm_transposeB(void){testOperator("test_gemm_transposeB");}
-void test_globalaveragepool(void){testOperator("test_globalaveragepool");}
-void test_globalaveragepool_precomputed(void){testOperator("test_globalaveragepool_precomputed");}
-void test_globalmaxpool(void){testOperator("test_globalmaxpool");}
-void test_globalmaxpool_precomputed(void){testOperator("test_globalmaxpool_precomputed");}
-void test_greater(void){testOperator("test_greater");}
-void test_greater_bcast(void){testOperator("test_greater_bcast");}
-void test_gru_defaults(void){testOperator("test_gru_defaults");}
-void test_gru_seq_length(void){testOperator("test_gru_seq_length");}
-void test_gru_with_initial_bias(void){testOperator("test_gru_with_initial_bias");}
-void test_hardmax_axis_0(void){testOperator("test_hardmax_axis_0");}
-void test_hardmax_axis_1(void){testOperator("test_hardmax_axis_1");}
-void test_hardmax_axis_2(void){testOperator("test_hardmax_axis_2");}
-void test_hardmax_default_axis(void){testOperator("test_hardmax_default_axis");}
-void test_hardmax_example(void){testOperator("test_hardmax_example");}
-void test_hardmax_negative_axis(void){testOperator("test_hardmax_negative_axis");}
-void test_hardmax_one_hot(void){testOperator("test_hardmax_one_hot");}
-void test_hardsigmoid(void){testOperator("test_hardsigmoid");}
-void test_hardsigmoid_default(void){testOperator("test_hardsigmoid_default");}
-void test_hardsigmoid_example(void){testOperator("test_hardsigmoid_example");}
-void test_identity(void){testOperator("test_identity");}
-void test_instancenorm_epsilon(void){testOperator("test_instancenorm_epsilon");}
-void test_instancenorm_example(void){testOperator("test_instancenorm_example");}
-void test_isinf(void){testOperator("test_isinf");}
-void test_isinf_negative(void){testOperator("test_isinf_negative");}
-void test_isinf_positive(void){testOperator("test_isinf_positive");}
-void test_isnan(void){testOperator("test_isnan");}
-void test_leakyrelu(void){testOperator("test_leakyrelu");}
-void test_leakyrelu_default(void){testOperator("test_leakyrelu_default");}
-void test_leakyrelu_example(void){testOperator("test_leakyrelu_example");}
-void test_less(void){testOperator("test_less");}
-void test_less_bcast(void){testOperator("test_less_bcast");}
-void test_log(void){testOperator("test_log");}
-void test_log_example(void){testOperator("test_log_example");}
-void test_logsoftmax_axis_0(void){testOperator("test_logsoftmax_axis_0");}
-void test_logsoftmax_axis_1(void){testOperator("test_logsoftmax_axis_1");}
-void test_logsoftmax_axis_2(void){testOperator("test_logsoftmax_axis_2");}
-void test_logsoftmax_default_axis(void){testOperator("test_logsoftmax_default_axis");}
-void test_logsoftmax_example_1(void){testOperator("test_logsoftmax_example_1");}
-void test_logsoftmax_large_number(void){testOperator("test_logsoftmax_large_number");}
-void test_logsoftmax_negative_axis(void){testOperator("test_logsoftmax_negative_axis");}
-void test_lrn(void){testOperator("test_lrn");}
-void test_lrn_default(void){testOperator("test_lrn_default");}
-void test_lstm_defaults(void){testOperator("test_lstm_defaults");}
-void test_lstm_with_initial_bias(void){testOperator("test_lstm_with_initial_bias");}
-void test_lstm_with_peepholes(void){testOperator("test_lstm_with_peepholes");}
-void test_matmul_2d(void){testOperator("test_matmul_2d");}
-void test_matmul_3d(void){testOperator("test_matmul_3d");}
-void test_matmul_4d(void){testOperator("test_matmul_4d");}
-void test_matmulinteger(void){testOperator("test_matmulinteger");}
-void test_max_example(void){testOperator("test_max_example");}
-void test_max_one_input(void){testOperator("test_max_one_input");}
-void test_max_two_inputs(void){testOperator("test_max_two_inputs");}
-void test_maxpool_1d_default(void){testOperator("test_maxpool_1d_default");}
-void test_maxpool_2d_ceil(void){testOperator("test_maxpool_2d_ceil");}
-void test_maxpool_2d_default(void){testOperator("test_maxpool_2d_default");}
-void test_maxpool_2d_dilations(void){testOperator("test_maxpool_2d_dilations");}
-void test_maxpool_2d_pads(void){testOperator("test_maxpool_2d_pads");}
-void test_maxpool_2d_precomputed_pads(void){testOperator("test_maxpool_2d_precomputed_pads");}
-void test_maxpool_2d_precomputed_same_upper(void){testOperator("test_maxpool_2d_precomputed_same_upper");}
-void test_maxpool_2d_precomputed_strides(void){testOperator("test_maxpool_2d_precomputed_strides");}
-void test_maxpool_2d_same_lower(void){testOperator("test_maxpool_2d_same_lower");}
-void test_maxpool_2d_same_upper(void){testOperator("test_maxpool_2d_same_upper");}
-void test_maxpool_2d_strides(void){testOperator("test_maxpool_2d_strides");}
-void test_maxpool_3d_default(void){testOperator("test_maxpool_3d_default");}
-void test_maxpool_with_argmax_2d_precomputed_pads(void){testOperator("test_maxpool_with_argmax_2d_precomputed_pads");}
-void test_maxpool_with_argmax_2d_precomputed_strides(void){testOperator("test_maxpool_with_argmax_2d_precomputed_strides");}
-void test_maxunpool_export_with_output_shape(void){testOperator("test_maxunpool_export_with_output_shape");}
-void test_maxunpool_export_without_output_shape(void){testOperator("test_maxunpool_export_without_output_shape");}
-void test_mean_example(void){testOperator("test_mean_example");}
-void test_mean_one_input(void){testOperator("test_mean_one_input");}
-void test_mean_two_inputs(void){testOperator("test_mean_two_inputs");}
-void test_min_example(void){testOperator("test_min_example");}
-void test_min_one_input(void){testOperator("test_min_one_input");}
-void test_min_two_inputs(void){testOperator("test_min_two_inputs");}
-void test_mod_broadcast(void){testOperator("test_mod_broadcast");}
-void test_mod_int64_fmod(void){testOperator("test_mod_int64_fmod");}
-void test_mod_mixed_sign_float16(void){testOperator("test_mod_mixed_sign_float16");}
-void test_mod_mixed_sign_float32(void){testOperator("test_mod_mixed_sign_float32");}
-void test_mod_mixed_sign_float64(void){testOperator("test_mod_mixed_sign_float64");}
-void test_mod_mixed_sign_int16(void){testOperator("test_mod_mixed_sign_int16");}
-void test_mod_mixed_sign_int32(void){testOperator("test_mod_mixed_sign_int32");}
-void test_mod_mixed_sign_int64(void){testOperator("test_mod_mixed_sign_int64");}
-void test_mod_mixed_sign_int8(void){testOperator("test_mod_mixed_sign_int8");}
-void test_mod_uint16(void){testOperator("test_mod_uint16");}
-void test_mod_uint32(void){testOperator("test_mod_uint32");}
-void test_mod_uint64(void){testOperator("test_mod_uint64");}
-void test_mod_uint8(void){testOperator("test_mod_uint8");}
-void test_mul(void){testOperator("test_mul");}
-void test_mul_bcast(void){testOperator("test_mul_bcast");}
-void test_mul_example(void){testOperator("test_mul_example");}
-void test_mvn(void){testOperator("test_mvn");}
-void test_mvn_expanded(void){testOperator("test_mvn_expanded");}
-void test_neg(void){testOperator("test_neg");}
-void test_neg_example(void){testOperator("test_neg_example");}
-void test_nonmaxsuppression_center_point_box_format(void){testOperator("test_nonmaxsuppression_center_point_box_format");}
-void test_nonmaxsuppression_flipped_coordinates(void){testOperator("test_nonmaxsuppression_flipped_coordinates");}
-void test_nonmaxsuppression_identical_boxes(void){testOperator("test_nonmaxsuppression_identical_boxes");}
-void test_nonmaxsuppression_limit_output_size(void){testOperator("test_nonmaxsuppression_limit_output_size");}
-void test_nonmaxsuppression_single_box(void){testOperator("test_nonmaxsuppression_single_box");}
-void test_nonmaxsuppression_suppress_by_IOU(void){testOperator("test_nonmaxsuppression_suppress_by_IOU");}
-void test_nonmaxsuppression_suppress_by_IOU_and_scores(void){testOperator("test_nonmaxsuppression_suppress_by_IOU_and_scores");}
-void test_nonmaxsuppression_two_batches(void){testOperator("test_nonmaxsuppression_two_batches");}
-void test_nonmaxsuppression_two_classes(void){testOperator("test_nonmaxsuppression_two_classes");}
-void test_nonzero_example(void){testOperator("test_nonzero_example");}
-void test_not_2d(void){testOperator("test_not_2d");}
-void test_not_3d(void){testOperator("test_not_3d");}
-void test_not_4d(void){testOperator("test_not_4d");}
-void test_onehot_negative_indices(void){testOperator("test_onehot_negative_indices");}
-void test_onehot_with_axis(void){testOperator("test_onehot_with_axis");}
-void test_onehot_with_negative_axis(void){testOperator("test_onehot_with_negative_axis");}
-void test_onehot_without_axis(void){testOperator("test_onehot_without_axis");}
-void test_or2d(void){testOperator("test_or2d");}
-void test_or3d(void){testOperator("test_or3d");}
-void test_or4d(void){testOperator("test_or4d");}
-void test_or_bcast3v1d(void){testOperator("test_or_bcast3v1d");}
-void test_or_bcast3v2d(void){testOperator("test_or_bcast3v2d");}
-void test_or_bcast4v2d(void){testOperator("test_or_bcast4v2d");}
-void test_or_bcast4v3d(void){testOperator("test_or_bcast4v3d");}
-void test_or_bcast4v4d(void){testOperator("test_or_bcast4v4d");}
-void test_pow(void){testOperator("test_pow");}
-void test_pow_bcast_array(void){testOperator("test_pow_bcast_array");}
-void test_pow_bcast_scalar(void){testOperator("test_pow_bcast_scalar");}
-void test_pow_example(void){testOperator("test_pow_example");}
-void test_prelu_broadcast(void){testOperator("test_prelu_broadcast");}
-void test_prelu_example(void){testOperator("test_prelu_example");}
-void test_qlinearconv(void){testOperator("test_qlinearconv");}
-void test_qlinearmatmul_2D(void){testOperator("test_qlinearmatmul_2D");}
-void test_qlinearmatmul_3D(void){testOperator("test_qlinearmatmul_3D");}
-void test_quantizelinear(void){testOperator("test_quantizelinear");}
-void test_range_float_type_positive_delta(void){testOperator("test_range_float_type_positive_delta");}
-void test_range_float_type_positive_delta_expanded(void){testOperator("test_range_float_type_positive_delta_expanded");}
-void test_range_int32_type_negative_delta(void){testOperator("test_range_int32_type_negative_delta");}
-void test_range_int32_type_negative_delta_expanded(void){testOperator("test_range_int32_type_negative_delta_expanded");}
-void test_reciprocal(void){testOperator("test_reciprocal");}
-void test_reciprocal_example(void){testOperator("test_reciprocal_example");}
-void test_reduce_l1_default_axes_keepdims_example(void){testOperator("test_reduce_l1_default_axes_keepdims_example");}
-void test_reduce_l1_default_axes_keepdims_random(void){testOperator("test_reduce_l1_default_axes_keepdims_random");}
-void test_reduce_l1_do_not_keepdims_example(void){testOperator("test_reduce_l1_do_not_keepdims_example");}
-void test_reduce_l1_do_not_keepdims_random(void){testOperator("test_reduce_l1_do_not_keepdims_random");}
-void test_reduce_l1_keep_dims_example(void){testOperator("test_reduce_l1_keep_dims_example");}
-void test_reduce_l1_keep_dims_random(void){testOperator("test_reduce_l1_keep_dims_random");}
-void test_reduce_l1_negative_axes_keep_dims_example(void){testOperator("test_reduce_l1_negative_axes_keep_dims_example");}
-void test_reduce_l1_negative_axes_keep_dims_random(void){testOperator("test_reduce_l1_negative_axes_keep_dims_random");}
-void test_reduce_l2_default_axes_keepdims_example(void){testOperator("test_reduce_l2_default_axes_keepdims_example");}
-void test_reduce_l2_default_axes_keepdims_random(void){testOperator("test_reduce_l2_default_axes_keepdims_random");}
-void test_reduce_l2_do_not_keepdims_example(void){testOperator("test_reduce_l2_do_not_keepdims_example");}
-void test_reduce_l2_do_not_keepdims_random(void){testOperator("test_reduce_l2_do_not_keepdims_random");}
-void test_reduce_l2_keep_dims_example(void){testOperator("test_reduce_l2_keep_dims_example");}
-void test_reduce_l2_keep_dims_random(void){testOperator("test_reduce_l2_keep_dims_random");}
-void test_reduce_l2_negative_axes_keep_dims_example(void){testOperator("test_reduce_l2_negative_axes_keep_dims_example");}
-void test_reduce_l2_negative_axes_keep_dims_random(void){testOperator("test_reduce_l2_negative_axes_keep_dims_random");}
-void test_reduce_log_sum(void){testOperator("test_reduce_log_sum");}
-void test_reduce_log_sum_asc_axes(void){testOperator("test_reduce_log_sum_asc_axes");}
-void test_reduce_log_sum_default(void){testOperator("test_reduce_log_sum_default");}
-void test_reduce_log_sum_desc_axes(void){testOperator("test_reduce_log_sum_desc_axes");}
-void test_reduce_log_sum_exp_default_axes_keepdims_example(void){testOperator("test_reduce_log_sum_exp_default_axes_keepdims_example");}
-void test_reduce_log_sum_exp_default_axes_keepdims_random(void){testOperator("test_reduce_log_sum_exp_default_axes_keepdims_random");}
-void test_reduce_log_sum_exp_do_not_keepdims_example(void){testOperator("test_reduce_log_sum_exp_do_not_keepdims_example");}
-void test_reduce_log_sum_exp_do_not_keepdims_random(void){testOperator("test_reduce_log_sum_exp_do_not_keepdims_random");}
-void test_reduce_log_sum_exp_keepdims_example(void){testOperator("test_reduce_log_sum_exp_keepdims_example");}
-void test_reduce_log_sum_exp_keepdims_random(void){testOperator("test_reduce_log_sum_exp_keepdims_random");}
-void test_reduce_log_sum_exp_negative_axes_keepdims_example(void){testOperator("test_reduce_log_sum_exp_negative_axes_keepdims_example");}
-void test_reduce_log_sum_exp_negative_axes_keepdims_random(void){testOperator("test_reduce_log_sum_exp_negative_axes_keepdims_random");}
-void test_reduce_log_sum_negative_axes(void){testOperator("test_reduce_log_sum_negative_axes");}
-void test_reduce_max_default_axes_keepdim_example(void){testOperator("test_reduce_max_default_axes_keepdim_example");}
-void test_reduce_max_default_axes_keepdims_random(void){testOperator("test_reduce_max_default_axes_keepdims_random");}
-void test_reduce_max_do_not_keepdims_example(void){testOperator("test_reduce_max_do_not_keepdims_example");}
-void test_reduce_max_do_not_keepdims_random(void){testOperator("test_reduce_max_do_not_keepdims_random");}
-void test_reduce_max_keepdims_example(void){testOperator("test_reduce_max_keepdims_example");}
-void test_reduce_max_keepdims_random(void){testOperator("test_reduce_max_keepdims_random");}
-void test_reduce_max_negative_axes_keepdims_example(void){testOperator("test_reduce_max_negative_axes_keepdims_example");}
-void test_reduce_max_negative_axes_keepdims_random(void){testOperator("test_reduce_max_negative_axes_keepdims_random");}
-void test_reduce_mean_default_axes_keepdims_example(void){testOperator("test_reduce_mean_default_axes_keepdims_example");}
-void test_reduce_mean_default_axes_keepdims_random(void){testOperator("test_reduce_mean_default_axes_keepdims_random");}
-void test_reduce_mean_do_not_keepdims_example(void){testOperator("test_reduce_mean_do_not_keepdims_example");}
-void test_reduce_mean_do_not_keepdims_random(void){testOperator("test_reduce_mean_do_not_keepdims_random");}
-void test_reduce_mean_keepdims_example(void){testOperator("test_reduce_mean_keepdims_example");}
-void test_reduce_mean_keepdims_random(void){testOperator("test_reduce_mean_keepdims_random");}
-void test_reduce_mean_negative_axes_keepdims_example(void){testOperator("test_reduce_mean_negative_axes_keepdims_example");}
-void test_reduce_mean_negative_axes_keepdims_random(void){testOperator("test_reduce_mean_negative_axes_keepdims_random");}
-void test_reduce_min_default_axes_keepdims_example(void){testOperator("test_reduce_min_default_axes_keepdims_example");}
-void test_reduce_min_default_axes_keepdims_random(void){testOperator("test_reduce_min_default_axes_keepdims_random");}
-void test_reduce_min_do_not_keepdims_example(void){testOperator("test_reduce_min_do_not_keepdims_example");}
-void test_reduce_min_do_not_keepdims_random(void){testOperator("test_reduce_min_do_not_keepdims_random");}
-void test_reduce_min_keepdims_example(void){testOperator("test_reduce_min_keepdims_example");}
-void test_reduce_min_keepdims_random(void){testOperator("test_reduce_min_keepdims_random");}
-void test_reduce_min_negative_axes_keepdims_example(void){testOperator("test_reduce_min_negative_axes_keepdims_example");}
-void test_reduce_min_negative_axes_keepdims_random(void){testOperator("test_reduce_min_negative_axes_keepdims_random");}
-void test_reduce_prod_default_axes_keepdims_example(void){testOperator("test_reduce_prod_default_axes_keepdims_example");}
-void test_reduce_prod_default_axes_keepdims_random(void){testOperator("test_reduce_prod_default_axes_keepdims_random");}
-void test_reduce_prod_do_not_keepdims_example(void){testOperator("test_reduce_prod_do_not_keepdims_example");}
-void test_reduce_prod_do_not_keepdims_random(void){testOperator("test_reduce_prod_do_not_keepdims_random");}
-void test_reduce_prod_keepdims_example(void){testOperator("test_reduce_prod_keepdims_example");}
-void test_reduce_prod_keepdims_random(void){testOperator("test_reduce_prod_keepdims_random");}
-void test_reduce_prod_negative_axes_keepdims_example(void){testOperator("test_reduce_prod_negative_axes_keepdims_example");}
-void test_reduce_prod_negative_axes_keepdims_random(void){testOperator("test_reduce_prod_negative_axes_keepdims_random");}
-void test_reduce_sum_default_axes_keepdims_example(void){testOperator("test_reduce_sum_default_axes_keepdims_example");}
-void test_reduce_sum_default_axes_keepdims_random(void){testOperator("test_reduce_sum_default_axes_keepdims_random");}
-void test_reduce_sum_do_not_keepdims_example(void){testOperator("test_reduce_sum_do_not_keepdims_example");}
-void test_reduce_sum_do_not_keepdims_random(void){testOperator("test_reduce_sum_do_not_keepdims_random");}
-void test_reduce_sum_keepdims_example(void){testOperator("test_reduce_sum_keepdims_example");}
-void test_reduce_sum_keepdims_random(void){testOperator("test_reduce_sum_keepdims_random");}
-void test_reduce_sum_negative_axes_keepdims_example(void){testOperator("test_reduce_sum_negative_axes_keepdims_example");}
-void test_reduce_sum_negative_axes_keepdims_random(void){testOperator("test_reduce_sum_negative_axes_keepdims_random");}
-void test_reduce_sum_square_default_axes_keepdims_example(void){testOperator("test_reduce_sum_square_default_axes_keepdims_example");}
-void test_reduce_sum_square_default_axes_keepdims_random(void){testOperator("test_reduce_sum_square_default_axes_keepdims_random");}
-void test_reduce_sum_square_do_not_keepdims_example(void){testOperator("test_reduce_sum_square_do_not_keepdims_example");}
-void test_reduce_sum_square_do_not_keepdims_random(void){testOperator("test_reduce_sum_square_do_not_keepdims_random");}
-void test_reduce_sum_square_keepdims_example(void){testOperator("test_reduce_sum_square_keepdims_example");}
-void test_reduce_sum_square_keepdims_random(void){testOperator("test_reduce_sum_square_keepdims_random");}
-void test_reduce_sum_square_negative_axes_keepdims_example(void){testOperator("test_reduce_sum_square_negative_axes_keepdims_example");}
-void test_reduce_sum_square_negative_axes_keepdims_random(void){testOperator("test_reduce_sum_square_negative_axes_keepdims_random");}
-void test_reflect_pad(void){testOperator("test_reflect_pad");}
-void test_relu(void){testOperator("test_relu");}
-void test_reshape_extended_dims(void){testOperator("test_reshape_extended_dims");}
-void test_reshape_negative_dim(void){testOperator("test_reshape_negative_dim");}
-void test_reshape_negative_extended_dims(void){testOperator("test_reshape_negative_extended_dims");}
-void test_reshape_one_dim(void){testOperator("test_reshape_one_dim");}
-void test_reshape_reduced_dims(void){testOperator("test_reshape_reduced_dims");}
-void test_reshape_reordered_all_dims(void){testOperator("test_reshape_reordered_all_dims");}
-void test_reshape_reordered_last_dims(void){testOperator("test_reshape_reordered_last_dims");}
-void test_reshape_zero_and_negative_dim(void){testOperator("test_reshape_zero_and_negative_dim");}
-void test_reshape_zero_dim(void){testOperator("test_reshape_zero_dim");}
-void test_resize_downsample_scales_cubic(void){testOperator("test_resize_downsample_scales_cubic");}
-void test_resize_downsample_scales_cubic_A_n0p5_exclude_outside(void){testOperator("test_resize_downsample_scales_cubic_A_n0p5_exclude_outside");}
-void test_resize_downsample_scales_cubic_align_corners(void){testOperator("test_resize_downsample_scales_cubic_align_corners");}
-void test_resize_downsample_scales_linear(void){testOperator("test_resize_downsample_scales_linear");}
-void test_resize_downsample_scales_linear_align_corners(void){testOperator("test_resize_downsample_scales_linear_align_corners");}
-void test_resize_downsample_scales_nearest(void){testOperator("test_resize_downsample_scales_nearest");}
-void test_resize_downsample_sizes_cubic(void){testOperator("test_resize_downsample_sizes_cubic");}
-void test_resize_downsample_sizes_linear_pytorch_half_pixel(void){testOperator("test_resize_downsample_sizes_linear_pytorch_half_pixel");}
-void test_resize_downsample_sizes_nearest(void){testOperator("test_resize_downsample_sizes_nearest");}
-void test_resize_downsample_sizes_nearest_tf_half_pixel_for_nn(void){testOperator("test_resize_downsample_sizes_nearest_tf_half_pixel_for_nn");}
-void test_resize_tf_crop_and_resize(void){testOperator("test_resize_tf_crop_and_resize");}
-void test_resize_upsample_scales_cubic(void){testOperator("test_resize_upsample_scales_cubic");}
-void test_resize_upsample_scales_cubic_A_n0p5_exclude_outside(void){testOperator("test_resize_upsample_scales_cubic_A_n0p5_exclude_outside");}
-void test_resize_upsample_scales_cubic_align_corners(void){testOperator("test_resize_upsample_scales_cubic_align_corners");}
-void test_resize_upsample_scales_cubic_asymmetric(void){testOperator("test_resize_upsample_scales_cubic_asymmetric");}
-void test_resize_upsample_scales_linear(void){testOperator("test_resize_upsample_scales_linear");}
-void test_resize_upsample_scales_linear_align_corners(void){testOperator("test_resize_upsample_scales_linear_align_corners");}
-void test_resize_upsample_scales_nearest(void){testOperator("test_resize_upsample_scales_nearest");}
-void test_resize_upsample_sizes_cubic(void){testOperator("test_resize_upsample_sizes_cubic");}
-void test_resize_upsample_sizes_nearest(void){testOperator("test_resize_upsample_sizes_nearest");}
-void test_resize_upsample_sizes_nearest_ceil_half_pixel(void){testOperator("test_resize_upsample_sizes_nearest_ceil_half_pixel");}
-void test_resize_upsample_sizes_nearest_floor_align_corners(void){testOperator("test_resize_upsample_sizes_nearest_floor_align_corners");}
-void test_resize_upsample_sizes_nearest_round_prefer_ceil_asymmetric(void){testOperator("test_resize_upsample_sizes_nearest_round_prefer_ceil_asymmetric");}
-void test_reversesequence_batch(void){testOperator("test_reversesequence_batch");}
-void test_reversesequence_time(void){testOperator("test_reversesequence_time");}
-void test_rnn_seq_length(void){testOperator("test_rnn_seq_length");}
-void test_roialign(void){testOperator("test_roialign");}
-void test_round(void){testOperator("test_round");}
-void test_scan9_sum(void){testOperator("test_scan9_sum");}
-void test_scan_sum(void){testOperator("test_scan_sum");}
-void test_scatter_elements_with_axis(void){testOperator("test_scatter_elements_with_axis");}
-void test_scatter_elements_with_negative_indices(void){testOperator("test_scatter_elements_with_negative_indices");}
-void test_scatter_elements_without_axis(void){testOperator("test_scatter_elements_without_axis");}
-void test_scatter_with_axis(void){testOperator("test_scatter_with_axis");}
-void test_scatter_without_axis(void){testOperator("test_scatter_without_axis");}
-void test_scatternd(void){testOperator("test_scatternd");}
-void test_selu(void){testOperator("test_selu");}
-void test_selu_default(void){testOperator("test_selu_default");}
-void test_selu_example(void){testOperator("test_selu_example");}
-void test_shape(void){testOperator("test_shape");}
-void test_shape_example(void){testOperator("test_shape_example");}
-void test_shrink_hard(void){testOperator("test_shrink_hard");}
-void test_shrink_soft(void){testOperator("test_shrink_soft");}
-void test_sigmoid(void){testOperator("test_sigmoid");}
-void test_sigmoid_example(void){testOperator("test_sigmoid_example");}
-void test_sign(void){testOperator("test_sign");}
-void test_simple_rnn_defaults(void){testOperator("test_simple_rnn_defaults");}
-void test_simple_rnn_with_initial_bias(void){testOperator("test_simple_rnn_with_initial_bias");}
-void test_sin(void){testOperator("test_sin");}
-void test_sin_example(void){testOperator("test_sin_example");}
-void test_sinh(void){testOperator("test_sinh");}
-void test_sinh_example(void){testOperator("test_sinh_example");}
-void test_size(void){testOperator("test_size");}
-void test_size_example(void){testOperator("test_size_example");}
-void test_slice(void){testOperator("test_slice");}
-void test_slice_default_axes(void){testOperator("test_slice_default_axes");}
-void test_slice_default_steps(void){testOperator("test_slice_default_steps");}
-void test_slice_end_out_of_bounds(void){testOperator("test_slice_end_out_of_bounds");}
-void test_slice_neg(void){testOperator("test_slice_neg");}
-void test_slice_neg_steps(void){testOperator("test_slice_neg_steps");}
-void test_slice_negative_axes(void){testOperator("test_slice_negative_axes");}
-void test_slice_start_out_of_bounds(void){testOperator("test_slice_start_out_of_bounds");}
-void test_softmax_axis_0(void){testOperator("test_softmax_axis_0");}
-void test_softmax_axis_1(void){testOperator("test_softmax_axis_1");}
-void test_softmax_axis_2(void){testOperator("test_softmax_axis_2");}
-void test_softmax_default_axis(void){testOperator("test_softmax_default_axis");}
-void test_softmax_example(void){testOperator("test_softmax_example");}
-void test_softmax_large_number(void){testOperator("test_softmax_large_number");}
-void test_softmax_negative_axis(void){testOperator("test_softmax_negative_axis");}
-void test_softplus(void){testOperator("test_softplus");}
-void test_softplus_example(void){testOperator("test_softplus_example");}
-void test_softsign(void){testOperator("test_softsign");}
-void test_softsign_example(void){testOperator("test_softsign_example");}
-void test_split_equal_parts_1d(void){testOperator("test_split_equal_parts_1d");}
-void test_split_equal_parts_2d(void){testOperator("test_split_equal_parts_2d");}
-void test_split_equal_parts_default_axis(void){testOperator("test_split_equal_parts_default_axis");}
-void test_split_variable_parts_1d(void){testOperator("test_split_variable_parts_1d");}
-void test_split_variable_parts_2d(void){testOperator("test_split_variable_parts_2d");}
-void test_split_variable_parts_default_axis(void){testOperator("test_split_variable_parts_default_axis");}
-void test_sqrt(void){testOperator("test_sqrt");}
-void test_sqrt_example(void){testOperator("test_sqrt_example");}
-void test_squeeze(void){testOperator("test_squeeze");}
-void test_squeeze_negative_axes(void){testOperator("test_squeeze_negative_axes");}
-void test_strnormalizer_export_monday_casesensintive_lower(void){testOperator("test_strnormalizer_export_monday_casesensintive_lower");}
-void test_strnormalizer_export_monday_casesensintive_nochangecase(void){testOperator("test_strnormalizer_export_monday_casesensintive_nochangecase");}
-void test_strnormalizer_export_monday_casesensintive_upper(void){testOperator("test_strnormalizer_export_monday_casesensintive_upper");}
-void test_strnormalizer_export_monday_empty_output(void){testOperator("test_strnormalizer_export_monday_empty_output");}
-void test_strnormalizer_export_monday_insensintive_upper_twodim(void){testOperator("test_strnormalizer_export_monday_insensintive_upper_twodim");}
-void test_strnormalizer_nostopwords_nochangecase(void){testOperator("test_strnormalizer_nostopwords_nochangecase");}
-void test_sub(void){testOperator("test_sub");}
-void test_sub_bcast(void){testOperator("test_sub_bcast");}
-void test_sub_example(void){testOperator("test_sub_example");}
-void test_sum_example(void){testOperator("test_sum_example");}
-void test_sum_one_input(void){testOperator("test_sum_one_input");}
-void test_sum_two_inputs(void){testOperator("test_sum_two_inputs");}
-void test_tan(void){testOperator("test_tan");}
-void test_tan_example(void){testOperator("test_tan_example");}
-void test_tanh(void){testOperator("test_tanh");}
-void test_tanh_example(void){testOperator("test_tanh_example");}
-void test_tfidfvectorizer_tf_batch_onlybigrams_skip0(void){testOperator("test_tfidfvectorizer_tf_batch_onlybigrams_skip0");}
-void test_tfidfvectorizer_tf_batch_onlybigrams_skip5(void){testOperator("test_tfidfvectorizer_tf_batch_onlybigrams_skip5");}
-void test_tfidfvectorizer_tf_batch_uniandbigrams_skip5(void){testOperator("test_tfidfvectorizer_tf_batch_uniandbigrams_skip5");}
-void test_tfidfvectorizer_tf_only_bigrams_skip0(void){testOperator("test_tfidfvectorizer_tf_only_bigrams_skip0");}
-void test_tfidfvectorizer_tf_onlybigrams_levelempty(void){testOperator("test_tfidfvectorizer_tf_onlybigrams_levelempty");}
-void test_tfidfvectorizer_tf_onlybigrams_skip5(void){testOperator("test_tfidfvectorizer_tf_onlybigrams_skip5");}
-void test_tfidfvectorizer_tf_uniandbigrams_skip5(void){testOperator("test_tfidfvectorizer_tf_uniandbigrams_skip5");}
-void test_thresholdedrelu(void){testOperator("test_thresholdedrelu");}
-void test_thresholdedrelu_default(void){testOperator("test_thresholdedrelu_default");}
-void test_thresholdedrelu_example(void){testOperator("test_thresholdedrelu_example");}
-void test_tile(void){testOperator("test_tile");}
-void test_tile_precomputed(void){testOperator("test_tile_precomputed");}
-void test_top_k(void){testOperator("test_top_k");}
-void test_top_k_negative_axis(void){testOperator("test_top_k_negative_axis");}
-void test_top_k_smallest(void){testOperator("test_top_k_smallest");}
-void test_transpose_all_permutations_0(void){testOperator("test_transpose_all_permutations_0");}
-void test_transpose_all_permutations_1(void){testOperator("test_transpose_all_permutations_1");}
-void test_transpose_all_permutations_2(void){testOperator("test_transpose_all_permutations_2");}
-void test_transpose_all_permutations_3(void){testOperator("test_transpose_all_permutations_3");}
-void test_transpose_all_permutations_4(void){testOperator("test_transpose_all_permutations_4");}
-void test_transpose_all_permutations_5(void){testOperator("test_transpose_all_permutations_5");}
-void test_transpose_default(void){testOperator("test_transpose_default");}
-void test_unique_not_sorted_without_axis(void){testOperator("test_unique_not_sorted_without_axis");}
-void test_unique_sorted_with_axis(void){testOperator("test_unique_sorted_with_axis");}
-void test_unique_sorted_with_axis_3d(void){testOperator("test_unique_sorted_with_axis_3d");}
-void test_unique_sorted_with_negative_axis(void){testOperator("test_unique_sorted_with_negative_axis");}
-void test_unique_sorted_without_axis(void){testOperator("test_unique_sorted_without_axis");}
-void test_unsqueeze_axis_0(void){testOperator("test_unsqueeze_axis_0");}
-void test_unsqueeze_axis_1(void){testOperator("test_unsqueeze_axis_1");}
-void test_unsqueeze_axis_2(void){testOperator("test_unsqueeze_axis_2");}
-void test_unsqueeze_axis_3(void){testOperator("test_unsqueeze_axis_3");}
-void test_unsqueeze_negative_axes(void){testOperator("test_unsqueeze_negative_axes");}
-void test_unsqueeze_three_axes(void){testOperator("test_unsqueeze_three_axes");}
-void test_unsqueeze_two_axes(void){testOperator("test_unsqueeze_two_axes");}
-void test_unsqueeze_unsorted_axes(void){testOperator("test_unsqueeze_unsorted_axes");}
-void test_upsample_nearest(void){testOperator("test_upsample_nearest");}
-void test_where_example(void){testOperator("test_where_example");}
-void test_where_long_example(void){testOperator("test_where_long_example");}
-void test_xor2d(void){testOperator("test_xor2d");}
-void test_xor3d(void){testOperator("test_xor3d");}
-void test_xor4d(void){testOperator("test_xor4d");}
-void test_xor_bcast3v1d(void){testOperator("test_xor_bcast3v1d");}
-void test_xor_bcast3v2d(void){testOperator("test_xor_bcast3v2d");}
-void test_xor_bcast4v2d(void){testOperator("test_xor_bcast4v2d");}
-void test_xor_bcast4v3d(void){testOperator("test_xor_bcast4v3d");}
-void test_xor_bcast4v4d(void){testOperator("test_xor_bcast4v4d");}
+PROTOTYPE_TEST_OPERATOR(abs)
+PROTOTYPE_TEST_OPERATOR(acos)
+PROTOTYPE_TEST_OPERATOR(acos_example)
+PROTOTYPE_TEST_OPERATOR(acosh)
+PROTOTYPE_TEST_OPERATOR(acosh_example)
+PROTOTYPE_TEST_OPERATOR(add)
+PROTOTYPE_TEST_OPERATOR(add_bcast)
+PROTOTYPE_TEST_OPERATOR(and2d)
+PROTOTYPE_TEST_OPERATOR(and3d)
+PROTOTYPE_TEST_OPERATOR(and4d)
+PROTOTYPE_TEST_OPERATOR(and_bcast3v1d)
+PROTOTYPE_TEST_OPERATOR(and_bcast3v2d)
+PROTOTYPE_TEST_OPERATOR(and_bcast4v2d)
+PROTOTYPE_TEST_OPERATOR(and_bcast4v3d)
+PROTOTYPE_TEST_OPERATOR(and_bcast4v4d)
+PROTOTYPE_TEST_OPERATOR(argmax_default_axis_example)
+PROTOTYPE_TEST_OPERATOR(argmax_default_axis_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_default_axis_random)
+PROTOTYPE_TEST_OPERATOR(argmax_default_axis_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(argmax_keepdims_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(argmax_keepdims_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_negative_axis_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(argmax_negative_axis_keepdims_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_negative_axis_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(argmax_negative_axis_keepdims_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_no_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(argmax_no_keepdims_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmax_no_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(argmax_no_keepdims_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_default_axis_example)
+PROTOTYPE_TEST_OPERATOR(argmin_default_axis_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_default_axis_random)
+PROTOTYPE_TEST_OPERATOR(argmin_default_axis_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(argmin_keepdims_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(argmin_keepdims_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_negative_axis_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(argmin_negative_axis_keepdims_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_negative_axis_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(argmin_negative_axis_keepdims_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_no_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(argmin_no_keepdims_example_select_last_index)
+PROTOTYPE_TEST_OPERATOR(argmin_no_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(argmin_no_keepdims_random_select_last_index)
+PROTOTYPE_TEST_OPERATOR(asin)
+PROTOTYPE_TEST_OPERATOR(asin_example)
+PROTOTYPE_TEST_OPERATOR(asinh)
+PROTOTYPE_TEST_OPERATOR(asinh_example)
+PROTOTYPE_TEST_OPERATOR(atan)
+PROTOTYPE_TEST_OPERATOR(atan_example)
+PROTOTYPE_TEST_OPERATOR(atanh)
+PROTOTYPE_TEST_OPERATOR(atanh_example)
+PROTOTYPE_TEST_OPERATOR(averagepool_1d_default)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_ceil)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_default)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_pads)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_pads_count_include_pad)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_precomputed_pads)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_precomputed_pads_count_include_pad)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_precomputed_same_upper)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_precomputed_strides)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_same_lower)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_same_upper)
+PROTOTYPE_TEST_OPERATOR(averagepool_2d_strides)
+PROTOTYPE_TEST_OPERATOR(averagepool_3d_default)
+PROTOTYPE_TEST_OPERATOR(basic_conv_with_padding)
+PROTOTYPE_TEST_OPERATOR(basic_conv_without_padding)
+PROTOTYPE_TEST_OPERATOR(basic_convinteger)
+PROTOTYPE_TEST_OPERATOR(batchnorm_epsilon)
+PROTOTYPE_TEST_OPERATOR(batchnorm_example)
+PROTOTYPE_TEST_OPERATOR(bitshift_left_uint16)
+PROTOTYPE_TEST_OPERATOR(bitshift_left_uint32)
+PROTOTYPE_TEST_OPERATOR(bitshift_left_uint64)
+PROTOTYPE_TEST_OPERATOR(bitshift_left_uint8)
+PROTOTYPE_TEST_OPERATOR(bitshift_right_uint16)
+PROTOTYPE_TEST_OPERATOR(bitshift_right_uint32)
+PROTOTYPE_TEST_OPERATOR(bitshift_right_uint64)
+PROTOTYPE_TEST_OPERATOR(bitshift_right_uint8)
+PROTOTYPE_TEST_OPERATOR(cast_DOUBLE_to_FLOAT)
+PROTOTYPE_TEST_OPERATOR(cast_DOUBLE_to_FLOAT16)
+PROTOTYPE_TEST_OPERATOR(cast_FLOAT16_to_DOUBLE)
+PROTOTYPE_TEST_OPERATOR(cast_FLOAT16_to_FLOAT)
+PROTOTYPE_TEST_OPERATOR(cast_FLOAT_to_DOUBLE)
+PROTOTYPE_TEST_OPERATOR(cast_FLOAT_to_FLOAT16)
+PROTOTYPE_TEST_OPERATOR(cast_FLOAT_to_STRING)
+PROTOTYPE_TEST_OPERATOR(cast_STRING_to_FLOAT)
+PROTOTYPE_TEST_OPERATOR(ceil)
+PROTOTYPE_TEST_OPERATOR(ceil_example)
+PROTOTYPE_TEST_OPERATOR(clip)
+PROTOTYPE_TEST_OPERATOR(clip_default_inbounds)
+PROTOTYPE_TEST_OPERATOR(clip_default_max)
+PROTOTYPE_TEST_OPERATOR(clip_default_min)
+PROTOTYPE_TEST_OPERATOR(clip_example)
+PROTOTYPE_TEST_OPERATOR(clip_inbounds)
+PROTOTYPE_TEST_OPERATOR(clip_outbounds)
+PROTOTYPE_TEST_OPERATOR(clip_splitbounds)
+PROTOTYPE_TEST_OPERATOR(compress_0)
+PROTOTYPE_TEST_OPERATOR(compress_1)
+PROTOTYPE_TEST_OPERATOR(compress_default_axis)
+PROTOTYPE_TEST_OPERATOR(compress_negative_axis)
+PROTOTYPE_TEST_OPERATOR(concat_1d_axis_0)
+PROTOTYPE_TEST_OPERATOR(concat_1d_axis_negative_1)
+PROTOTYPE_TEST_OPERATOR(concat_2d_axis_0)
+PROTOTYPE_TEST_OPERATOR(concat_2d_axis_1)
+PROTOTYPE_TEST_OPERATOR(concat_2d_axis_negative_1)
+PROTOTYPE_TEST_OPERATOR(concat_2d_axis_negative_2)
+PROTOTYPE_TEST_OPERATOR(concat_3d_axis_0)
+PROTOTYPE_TEST_OPERATOR(concat_3d_axis_1)
+PROTOTYPE_TEST_OPERATOR(concat_3d_axis_2)
+PROTOTYPE_TEST_OPERATOR(concat_3d_axis_negative_1)
+PROTOTYPE_TEST_OPERATOR(concat_3d_axis_negative_2)
+PROTOTYPE_TEST_OPERATOR(concat_3d_axis_negative_3)
+PROTOTYPE_TEST_OPERATOR(constant)
+PROTOTYPE_TEST_OPERATOR(constant_pad)
+PROTOTYPE_TEST_OPERATOR(constantofshape_float_ones)
+PROTOTYPE_TEST_OPERATOR(constantofshape_int_zeros)
+PROTOTYPE_TEST_OPERATOR(conv_with_strides_and_asymmetric_padding)
+PROTOTYPE_TEST_OPERATOR(conv_with_strides_no_padding)
+PROTOTYPE_TEST_OPERATOR(conv_with_strides_padding)
+PROTOTYPE_TEST_OPERATOR(convinteger_with_padding)
+PROTOTYPE_TEST_OPERATOR(convtranspose)
+PROTOTYPE_TEST_OPERATOR(convtranspose_1d)
+PROTOTYPE_TEST_OPERATOR(convtranspose_3d)
+PROTOTYPE_TEST_OPERATOR(convtranspose_dilations)
+PROTOTYPE_TEST_OPERATOR(convtranspose_kernel_shape)
+PROTOTYPE_TEST_OPERATOR(convtranspose_output_shape)
+PROTOTYPE_TEST_OPERATOR(convtranspose_pad)
+PROTOTYPE_TEST_OPERATOR(convtranspose_pads)
+PROTOTYPE_TEST_OPERATOR(convtranspose_with_kernel)
+PROTOTYPE_TEST_OPERATOR(cos)
+PROTOTYPE_TEST_OPERATOR(cos_example)
+PROTOTYPE_TEST_OPERATOR(cosh)
+PROTOTYPE_TEST_OPERATOR(cosh_example)
+PROTOTYPE_TEST_OPERATOR(cumsum_1d)
+PROTOTYPE_TEST_OPERATOR(cumsum_1d_exclusive)
+PROTOTYPE_TEST_OPERATOR(cumsum_1d_reverse)
+PROTOTYPE_TEST_OPERATOR(cumsum_1d_reverse_exclusive)
+PROTOTYPE_TEST_OPERATOR(cumsum_2d_axis_0)
+PROTOTYPE_TEST_OPERATOR(cumsum_2d_axis_1)
+PROTOTYPE_TEST_OPERATOR(cumsum_2d_negative_axis)
+PROTOTYPE_TEST_OPERATOR(depthtospace_crd_mode)
+PROTOTYPE_TEST_OPERATOR(depthtospace_crd_mode_example)
+PROTOTYPE_TEST_OPERATOR(depthtospace_dcr_mode)
+PROTOTYPE_TEST_OPERATOR(depthtospace_example)
+PROTOTYPE_TEST_OPERATOR(dequantizelinear)
+PROTOTYPE_TEST_OPERATOR(det_2d)
+PROTOTYPE_TEST_OPERATOR(det_nd)
+PROTOTYPE_TEST_OPERATOR(div)
+PROTOTYPE_TEST_OPERATOR(div_bcast)
+PROTOTYPE_TEST_OPERATOR(div_example)
+PROTOTYPE_TEST_OPERATOR(dropout_default)
+PROTOTYPE_TEST_OPERATOR(dropout_random)
+PROTOTYPE_TEST_OPERATOR(dynamicquantizelinear)
+PROTOTYPE_TEST_OPERATOR(dynamicquantizelinear_expanded)
+PROTOTYPE_TEST_OPERATOR(dynamicquantizelinear_max_adjusted)
+PROTOTYPE_TEST_OPERATOR(dynamicquantizelinear_max_adjusted_expanded)
+PROTOTYPE_TEST_OPERATOR(dynamicquantizelinear_min_adjusted)
+PROTOTYPE_TEST_OPERATOR(dynamicquantizelinear_min_adjusted_expanded)
+PROTOTYPE_TEST_OPERATOR(edge_pad)
+PROTOTYPE_TEST_OPERATOR(elu)
+PROTOTYPE_TEST_OPERATOR(elu_default)
+PROTOTYPE_TEST_OPERATOR(elu_example)
+PROTOTYPE_TEST_OPERATOR(equal)
+PROTOTYPE_TEST_OPERATOR(equal_bcast)
+PROTOTYPE_TEST_OPERATOR(erf)
+PROTOTYPE_TEST_OPERATOR(exp)
+PROTOTYPE_TEST_OPERATOR(exp_example)
+PROTOTYPE_TEST_OPERATOR(expand_dim_changed)
+PROTOTYPE_TEST_OPERATOR(expand_dim_unchanged)
+PROTOTYPE_TEST_OPERATOR(eyelike_populate_off_main_diagonal)
+PROTOTYPE_TEST_OPERATOR(eyelike_with_dtype)
+PROTOTYPE_TEST_OPERATOR(eyelike_without_dtype)
+PROTOTYPE_TEST_OPERATOR(flatten_axis0)
+PROTOTYPE_TEST_OPERATOR(flatten_axis1)
+PROTOTYPE_TEST_OPERATOR(flatten_axis2)
+PROTOTYPE_TEST_OPERATOR(flatten_axis3)
+PROTOTYPE_TEST_OPERATOR(flatten_default_axis)
+PROTOTYPE_TEST_OPERATOR(flatten_negative_axis1)
+PROTOTYPE_TEST_OPERATOR(flatten_negative_axis2)
+PROTOTYPE_TEST_OPERATOR(flatten_negative_axis3)
+PROTOTYPE_TEST_OPERATOR(flatten_negative_axis4)
+PROTOTYPE_TEST_OPERATOR(floor)
+PROTOTYPE_TEST_OPERATOR(floor_example)
+PROTOTYPE_TEST_OPERATOR(gather_0)
+PROTOTYPE_TEST_OPERATOR(gather_1)
+PROTOTYPE_TEST_OPERATOR(gather_elements_0)
+PROTOTYPE_TEST_OPERATOR(gather_elements_1)
+PROTOTYPE_TEST_OPERATOR(gather_elements_negative_indices)
+PROTOTYPE_TEST_OPERATOR(gather_negative_indices)
+PROTOTYPE_TEST_OPERATOR(gathernd_example_float32)
+PROTOTYPE_TEST_OPERATOR(gathernd_example_int32)
+PROTOTYPE_TEST_OPERATOR(gemm_all_attributes)
+PROTOTYPE_TEST_OPERATOR(gemm_alpha)
+PROTOTYPE_TEST_OPERATOR(gemm_beta)
+PROTOTYPE_TEST_OPERATOR(gemm_default_matrix_bias)
+PROTOTYPE_TEST_OPERATOR(gemm_default_no_bias)
+PROTOTYPE_TEST_OPERATOR(gemm_default_scalar_bias)
+PROTOTYPE_TEST_OPERATOR(gemm_default_single_elem_vector_bias)
+PROTOTYPE_TEST_OPERATOR(gemm_default_vector_bias)
+PROTOTYPE_TEST_OPERATOR(gemm_default_zero_bias)
+PROTOTYPE_TEST_OPERATOR(gemm_transposeA)
+PROTOTYPE_TEST_OPERATOR(gemm_transposeB)
+PROTOTYPE_TEST_OPERATOR(globalaveragepool)
+PROTOTYPE_TEST_OPERATOR(globalaveragepool_precomputed)
+PROTOTYPE_TEST_OPERATOR(globalmaxpool)
+PROTOTYPE_TEST_OPERATOR(globalmaxpool_precomputed)
+PROTOTYPE_TEST_OPERATOR(greater)
+PROTOTYPE_TEST_OPERATOR(greater_bcast)
+PROTOTYPE_TEST_OPERATOR(gru_defaults)
+PROTOTYPE_TEST_OPERATOR(gru_seq_length)
+PROTOTYPE_TEST_OPERATOR(gru_with_initial_bias)
+PROTOTYPE_TEST_OPERATOR(hardmax_axis_0)
+PROTOTYPE_TEST_OPERATOR(hardmax_axis_1)
+PROTOTYPE_TEST_OPERATOR(hardmax_axis_2)
+PROTOTYPE_TEST_OPERATOR(hardmax_default_axis)
+PROTOTYPE_TEST_OPERATOR(hardmax_example)
+PROTOTYPE_TEST_OPERATOR(hardmax_negative_axis)
+PROTOTYPE_TEST_OPERATOR(hardmax_one_hot)
+PROTOTYPE_TEST_OPERATOR(hardsigmoid)
+PROTOTYPE_TEST_OPERATOR(hardsigmoid_default)
+PROTOTYPE_TEST_OPERATOR(hardsigmoid_example)
+PROTOTYPE_TEST_OPERATOR(identity)
+PROTOTYPE_TEST_OPERATOR(instancenorm_epsilon)
+PROTOTYPE_TEST_OPERATOR(instancenorm_example)
+PROTOTYPE_TEST_OPERATOR(isinf)
+PROTOTYPE_TEST_OPERATOR(isinf_negative)
+PROTOTYPE_TEST_OPERATOR(isinf_positive)
+PROTOTYPE_TEST_OPERATOR(isnan)
+PROTOTYPE_TEST_OPERATOR(leakyrelu)
+PROTOTYPE_TEST_OPERATOR(leakyrelu_default)
+PROTOTYPE_TEST_OPERATOR(leakyrelu_example)
+PROTOTYPE_TEST_OPERATOR(less)
+PROTOTYPE_TEST_OPERATOR(less_bcast)
+PROTOTYPE_TEST_OPERATOR(log)
+PROTOTYPE_TEST_OPERATOR(log_example)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_axis_0)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_axis_1)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_axis_2)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_default_axis)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_example_1)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_large_number)
+PROTOTYPE_TEST_OPERATOR(logsoftmax_negative_axis)
+PROTOTYPE_TEST_OPERATOR(lrn)
+PROTOTYPE_TEST_OPERATOR(lrn_default)
+PROTOTYPE_TEST_OPERATOR(lstm_defaults)
+PROTOTYPE_TEST_OPERATOR(lstm_with_initial_bias)
+PROTOTYPE_TEST_OPERATOR(lstm_with_peepholes)
+PROTOTYPE_TEST_OPERATOR(matmul_2d)
+PROTOTYPE_TEST_OPERATOR(matmul_3d)
+PROTOTYPE_TEST_OPERATOR(matmul_4d)
+PROTOTYPE_TEST_OPERATOR(matmulinteger)
+PROTOTYPE_TEST_OPERATOR(max_example)
+PROTOTYPE_TEST_OPERATOR(max_one_input)
+PROTOTYPE_TEST_OPERATOR(max_two_inputs)
+PROTOTYPE_TEST_OPERATOR(maxpool_1d_default)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_ceil)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_default)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_dilations)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_pads)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_precomputed_pads)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_precomputed_same_upper)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_precomputed_strides)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_same_lower)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_same_upper)
+PROTOTYPE_TEST_OPERATOR(maxpool_2d_strides)
+PROTOTYPE_TEST_OPERATOR(maxpool_3d_default)
+PROTOTYPE_TEST_OPERATOR(maxpool_with_argmax_2d_precomputed_pads)
+PROTOTYPE_TEST_OPERATOR(maxpool_with_argmax_2d_precomputed_strides)
+PROTOTYPE_TEST_OPERATOR(maxunpool_export_with_output_shape)
+PROTOTYPE_TEST_OPERATOR(maxunpool_export_without_output_shape)
+PROTOTYPE_TEST_OPERATOR(mean_example)
+PROTOTYPE_TEST_OPERATOR(mean_one_input)
+PROTOTYPE_TEST_OPERATOR(mean_two_inputs)
+PROTOTYPE_TEST_OPERATOR(min_example)
+PROTOTYPE_TEST_OPERATOR(min_one_input)
+PROTOTYPE_TEST_OPERATOR(min_two_inputs)
+PROTOTYPE_TEST_OPERATOR(mod_broadcast)
+PROTOTYPE_TEST_OPERATOR(mod_int64_fmod)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_float16)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_float32)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_float64)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_int16)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_int32)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_int64)
+PROTOTYPE_TEST_OPERATOR(mod_mixed_sign_int8)
+PROTOTYPE_TEST_OPERATOR(mod_uint16)
+PROTOTYPE_TEST_OPERATOR(mod_uint32)
+PROTOTYPE_TEST_OPERATOR(mod_uint64)
+PROTOTYPE_TEST_OPERATOR(mod_uint8)
+PROTOTYPE_TEST_OPERATOR(mul)
+PROTOTYPE_TEST_OPERATOR(mul_bcast)
+PROTOTYPE_TEST_OPERATOR(mul_example)
+PROTOTYPE_TEST_OPERATOR(mvn)
+PROTOTYPE_TEST_OPERATOR(mvn_expanded)
+PROTOTYPE_TEST_OPERATOR(neg)
+PROTOTYPE_TEST_OPERATOR(neg_example)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_center_point_box_format)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_flipped_coordinates)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_identical_boxes)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_limit_output_size)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_single_box)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_suppress_by_IOU)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_suppress_by_IOU_and_scores)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_two_batches)
+PROTOTYPE_TEST_OPERATOR(nonmaxsuppression_two_classes)
+PROTOTYPE_TEST_OPERATOR(nonzero_example)
+PROTOTYPE_TEST_OPERATOR(not_2d)
+PROTOTYPE_TEST_OPERATOR(not_3d)
+PROTOTYPE_TEST_OPERATOR(not_4d)
+PROTOTYPE_TEST_OPERATOR(onehot_negative_indices)
+PROTOTYPE_TEST_OPERATOR(onehot_with_axis)
+PROTOTYPE_TEST_OPERATOR(onehot_with_negative_axis)
+PROTOTYPE_TEST_OPERATOR(onehot_without_axis)
+PROTOTYPE_TEST_OPERATOR(or2d)
+PROTOTYPE_TEST_OPERATOR(or3d)
+PROTOTYPE_TEST_OPERATOR(or4d)
+PROTOTYPE_TEST_OPERATOR(or_bcast3v1d)
+PROTOTYPE_TEST_OPERATOR(or_bcast3v2d)
+PROTOTYPE_TEST_OPERATOR(or_bcast4v2d)
+PROTOTYPE_TEST_OPERATOR(or_bcast4v3d)
+PROTOTYPE_TEST_OPERATOR(or_bcast4v4d)
+PROTOTYPE_TEST_OPERATOR(pow)
+PROTOTYPE_TEST_OPERATOR(pow_bcast_array)
+PROTOTYPE_TEST_OPERATOR(pow_bcast_scalar)
+PROTOTYPE_TEST_OPERATOR(pow_example)
+PROTOTYPE_TEST_OPERATOR(prelu_broadcast)
+PROTOTYPE_TEST_OPERATOR(prelu_example)
+PROTOTYPE_TEST_OPERATOR(qlinearconv)
+PROTOTYPE_TEST_OPERATOR(qlinearmatmul_2D)
+PROTOTYPE_TEST_OPERATOR(qlinearmatmul_3D)
+PROTOTYPE_TEST_OPERATOR(quantizelinear)
+PROTOTYPE_TEST_OPERATOR(range_float_type_positive_delta)
+PROTOTYPE_TEST_OPERATOR(range_float_type_positive_delta_expanded)
+PROTOTYPE_TEST_OPERATOR(range_int32_type_negative_delta)
+PROTOTYPE_TEST_OPERATOR(range_int32_type_negative_delta_expanded)
+PROTOTYPE_TEST_OPERATOR(reciprocal)
+PROTOTYPE_TEST_OPERATOR(reciprocal_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_keep_dims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_keep_dims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_negative_axes_keep_dims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l1_negative_axes_keep_dims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_keep_dims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_keep_dims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_negative_axes_keep_dims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_l2_negative_axes_keep_dims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_asc_axes)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_default)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_desc_axes)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_exp_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_log_sum_negative_axes)
+PROTOTYPE_TEST_OPERATOR(reduce_max_default_axes_keepdim_example)
+PROTOTYPE_TEST_OPERATOR(reduce_max_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_max_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_max_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_max_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_max_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_max_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_max_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_mean_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_min_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_min_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_min_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_min_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_min_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_min_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_min_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_min_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_prod_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_default_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_default_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_do_not_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_do_not_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_negative_axes_keepdims_example)
+PROTOTYPE_TEST_OPERATOR(reduce_sum_square_negative_axes_keepdims_random)
+PROTOTYPE_TEST_OPERATOR(reflect_pad)
+PROTOTYPE_TEST_OPERATOR(relu)
+PROTOTYPE_TEST_OPERATOR(reshape_extended_dims)
+PROTOTYPE_TEST_OPERATOR(reshape_negative_dim)
+PROTOTYPE_TEST_OPERATOR(reshape_negative_extended_dims)
+PROTOTYPE_TEST_OPERATOR(reshape_one_dim)
+PROTOTYPE_TEST_OPERATOR(reshape_reduced_dims)
+PROTOTYPE_TEST_OPERATOR(reshape_reordered_all_dims)
+PROTOTYPE_TEST_OPERATOR(reshape_reordered_last_dims)
+PROTOTYPE_TEST_OPERATOR(reshape_zero_and_negative_dim)
+PROTOTYPE_TEST_OPERATOR(reshape_zero_dim)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_scales_cubic)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_scales_cubic_A_n0p5_exclude_outside)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_scales_cubic_align_corners)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_scales_linear)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_scales_linear_align_corners)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_scales_nearest)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_sizes_cubic)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_sizes_linear_pytorch_half_pixel)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_sizes_nearest)
+PROTOTYPE_TEST_OPERATOR(resize_downsample_sizes_nearest_tf_half_pixel_for_nn)
+PROTOTYPE_TEST_OPERATOR(resize_tf_crop_and_resize)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_cubic)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_cubic_A_n0p5_exclude_outside)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_cubic_align_corners)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_cubic_asymmetric)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_linear)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_linear_align_corners)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_scales_nearest)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_sizes_cubic)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_sizes_nearest)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_sizes_nearest_ceil_half_pixel)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_sizes_nearest_floor_align_corners)
+PROTOTYPE_TEST_OPERATOR(resize_upsample_sizes_nearest_round_prefer_ceil_asymmetric)
+PROTOTYPE_TEST_OPERATOR(reversesequence_batch)
+PROTOTYPE_TEST_OPERATOR(reversesequence_time)
+PROTOTYPE_TEST_OPERATOR(rnn_seq_length)
+PROTOTYPE_TEST_OPERATOR(roialign)
+PROTOTYPE_TEST_OPERATOR(round)
+PROTOTYPE_TEST_OPERATOR(scan9_sum)
+PROTOTYPE_TEST_OPERATOR(scan_sum)
+PROTOTYPE_TEST_OPERATOR(scatter_elements_with_axis)
+PROTOTYPE_TEST_OPERATOR(scatter_elements_with_negative_indices)
+PROTOTYPE_TEST_OPERATOR(scatter_elements_without_axis)
+PROTOTYPE_TEST_OPERATOR(scatter_with_axis)
+PROTOTYPE_TEST_OPERATOR(scatter_without_axis)
+PROTOTYPE_TEST_OPERATOR(scatternd)
+PROTOTYPE_TEST_OPERATOR(selu)
+PROTOTYPE_TEST_OPERATOR(selu_default)
+PROTOTYPE_TEST_OPERATOR(selu_example)
+PROTOTYPE_TEST_OPERATOR(shape)
+PROTOTYPE_TEST_OPERATOR(shape_example)
+PROTOTYPE_TEST_OPERATOR(shrink_hard)
+PROTOTYPE_TEST_OPERATOR(shrink_soft)
+PROTOTYPE_TEST_OPERATOR(sigmoid)
+PROTOTYPE_TEST_OPERATOR(sigmoid_example)
+PROTOTYPE_TEST_OPERATOR(sign)
+PROTOTYPE_TEST_OPERATOR(simple_rnn_defaults)
+PROTOTYPE_TEST_OPERATOR(simple_rnn_with_initial_bias)
+PROTOTYPE_TEST_OPERATOR(sin)
+PROTOTYPE_TEST_OPERATOR(sin_example)
+PROTOTYPE_TEST_OPERATOR(sinh)
+PROTOTYPE_TEST_OPERATOR(sinh_example)
+PROTOTYPE_TEST_OPERATOR(size)
+PROTOTYPE_TEST_OPERATOR(size_example)
+PROTOTYPE_TEST_OPERATOR(slice)
+PROTOTYPE_TEST_OPERATOR(slice_default_axes)
+PROTOTYPE_TEST_OPERATOR(slice_default_steps)
+PROTOTYPE_TEST_OPERATOR(slice_end_out_of_bounds)
+PROTOTYPE_TEST_OPERATOR(slice_neg)
+PROTOTYPE_TEST_OPERATOR(slice_neg_steps)
+PROTOTYPE_TEST_OPERATOR(slice_negative_axes)
+PROTOTYPE_TEST_OPERATOR(slice_start_out_of_bounds)
+PROTOTYPE_TEST_OPERATOR(softmax_axis_0)
+PROTOTYPE_TEST_OPERATOR(softmax_axis_1)
+PROTOTYPE_TEST_OPERATOR(softmax_axis_2)
+PROTOTYPE_TEST_OPERATOR(softmax_default_axis)
+PROTOTYPE_TEST_OPERATOR(softmax_example)
+PROTOTYPE_TEST_OPERATOR(softmax_large_number)
+PROTOTYPE_TEST_OPERATOR(softmax_negative_axis)
+PROTOTYPE_TEST_OPERATOR(softplus)
+PROTOTYPE_TEST_OPERATOR(softplus_example)
+PROTOTYPE_TEST_OPERATOR(softsign)
+PROTOTYPE_TEST_OPERATOR(softsign_example)
+PROTOTYPE_TEST_OPERATOR(split_equal_parts_1d)
+PROTOTYPE_TEST_OPERATOR(split_equal_parts_2d)
+PROTOTYPE_TEST_OPERATOR(split_equal_parts_default_axis)
+PROTOTYPE_TEST_OPERATOR(split_variable_parts_1d)
+PROTOTYPE_TEST_OPERATOR(split_variable_parts_2d)
+PROTOTYPE_TEST_OPERATOR(split_variable_parts_default_axis)
+PROTOTYPE_TEST_OPERATOR(sqrt)
+PROTOTYPE_TEST_OPERATOR(sqrt_example)
+PROTOTYPE_TEST_OPERATOR(squeeze)
+PROTOTYPE_TEST_OPERATOR(squeeze_negative_axes)
+PROTOTYPE_TEST_OPERATOR(strnormalizer_export_monday_casesensintive_lower)
+PROTOTYPE_TEST_OPERATOR(strnormalizer_export_monday_casesensintive_nochangecase)
+PROTOTYPE_TEST_OPERATOR(strnormalizer_export_monday_casesensintive_upper)
+PROTOTYPE_TEST_OPERATOR(strnormalizer_export_monday_empty_output)
+PROTOTYPE_TEST_OPERATOR(strnormalizer_export_monday_insensintive_upper_twodim)
+PROTOTYPE_TEST_OPERATOR(strnormalizer_nostopwords_nochangecase)
+PROTOTYPE_TEST_OPERATOR(sub)
+PROTOTYPE_TEST_OPERATOR(sub_bcast)
+PROTOTYPE_TEST_OPERATOR(sub_example)
+PROTOTYPE_TEST_OPERATOR(sum_example)
+PROTOTYPE_TEST_OPERATOR(sum_one_input)
+PROTOTYPE_TEST_OPERATOR(sum_two_inputs)
+PROTOTYPE_TEST_OPERATOR(tan)
+PROTOTYPE_TEST_OPERATOR(tan_example)
+PROTOTYPE_TEST_OPERATOR(tanh)
+PROTOTYPE_TEST_OPERATOR(tanh_example)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_batch_onlybigrams_skip0)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_batch_onlybigrams_skip5)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_batch_uniandbigrams_skip5)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_only_bigrams_skip0)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_onlybigrams_levelempty)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_onlybigrams_skip5)
+PROTOTYPE_TEST_OPERATOR(tfidfvectorizer_tf_uniandbigrams_skip5)
+PROTOTYPE_TEST_OPERATOR(thresholdedrelu)
+PROTOTYPE_TEST_OPERATOR(thresholdedrelu_default)
+PROTOTYPE_TEST_OPERATOR(thresholdedrelu_example)
+PROTOTYPE_TEST_OPERATOR(tile)
+PROTOTYPE_TEST_OPERATOR(tile_precomputed)
+PROTOTYPE_TEST_OPERATOR(top_k)
+PROTOTYPE_TEST_OPERATOR(top_k_negative_axis)
+PROTOTYPE_TEST_OPERATOR(top_k_smallest)
+PROTOTYPE_TEST_OPERATOR(transpose_all_permutations_0)
+PROTOTYPE_TEST_OPERATOR(transpose_all_permutations_1)
+PROTOTYPE_TEST_OPERATOR(transpose_all_permutations_2)
+PROTOTYPE_TEST_OPERATOR(transpose_all_permutations_3)
+PROTOTYPE_TEST_OPERATOR(transpose_all_permutations_4)
+PROTOTYPE_TEST_OPERATOR(transpose_all_permutations_5)
+PROTOTYPE_TEST_OPERATOR(transpose_default)
+PROTOTYPE_TEST_OPERATOR(unique_not_sorted_without_axis)
+PROTOTYPE_TEST_OPERATOR(unique_sorted_with_axis)
+PROTOTYPE_TEST_OPERATOR(unique_sorted_with_axis_3d)
+PROTOTYPE_TEST_OPERATOR(unique_sorted_with_negative_axis)
+PROTOTYPE_TEST_OPERATOR(unique_sorted_without_axis)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_axis_0)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_axis_1)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_axis_2)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_axis_3)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_negative_axes)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_three_axes)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_two_axes)
+PROTOTYPE_TEST_OPERATOR(unsqueeze_unsorted_axes)
+PROTOTYPE_TEST_OPERATOR(upsample_nearest)
+PROTOTYPE_TEST_OPERATOR(where_example)
+PROTOTYPE_TEST_OPERATOR(where_long_example)
+PROTOTYPE_TEST_OPERATOR(xor2d)
+PROTOTYPE_TEST_OPERATOR(xor3d)
+PROTOTYPE_TEST_OPERATOR(xor4d)
+PROTOTYPE_TEST_OPERATOR(xor_bcast3v1d)
+PROTOTYPE_TEST_OPERATOR(xor_bcast3v2d)
+PROTOTYPE_TEST_OPERATOR(xor_bcast4v2d)
+PROTOTYPE_TEST_OPERATOR(xor_bcast4v3d)
+PROTOTYPE_TEST_OPERATOR(xor_bcast4v4d)
 
 #endif

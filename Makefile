@@ -63,8 +63,8 @@ HELP_runtest=build runtest binary
 ALL+=runtest
 TARGET+=runtest
 runtest: $(BUILDDIR)/runtest
-$(BUILDDIR)/runtest: $(OBJS) 
-	$(CC) -o $@ test/tests.c $^ $(LDFLAGS) $(LDLIBS)
+$(BUILDDIR)/runtest: test/tests.c test/test_utils.c test/operators/test_onnx_backend_operators_stubs.c test/operators/test_onnx_backend_operators.c $(OBJS)
+	$(CC) -o $@  -I test $^ $(LDFLAGS) $(LDLIBS)
 
 .phony: clean_runtest
 CLEAN+=clean_runtest
@@ -145,8 +145,8 @@ HELP_connxr=build connxr binary
 TARGET+=connxr
 ALL+=connxr
 connxr: $(BUILDDIR)/connxr
-$(BUILDDIR)/connxr: $(OBJS)
-	$(CC) -o $@ src/connxr.c $^ $(LDFLAGS) $(LDLIBS)
+$(BUILDDIR)/connxr: src/connxr.c $(OBJS)
+	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 .phony:clean_connxr
 CLEAN+=clean_connxr
