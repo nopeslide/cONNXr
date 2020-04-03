@@ -233,7 +233,7 @@ def text_header_operator(schema):
 {inputs}
 {outputs}
 {attributes}
-{version}
+{text_version}
 {definition}
 {documentation}
  */
@@ -265,7 +265,8 @@ def text_header_operator(schema):
         outputs=text_outputs(schema),
         script=text_scriptname(),
         stubs=text_stubs(schema),
-        version=text_version(schema),
+        version=schema.since_version,
+        text_version=text_version(schema),
         constraints=text_constraints(schema),
     )
 
