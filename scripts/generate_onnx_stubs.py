@@ -410,43 +410,7 @@ def text_check_sameType(schema):
 
 
 ''' needs function like this
-  static __attribute__((always_inline))
-  bool operator_test_sameType(
-    size_t                  n_input,
-    Onnx__TensorProto    ** input,
-    char                 ** input_names,
-    size_t                  n_output,
-    Onnx__TensorProto    ** output,
-    char                 ** output_names,
-    size_t                  max_n_group
-  )
-  {
-    if ( max_n_group < 2 ) return TRUE;
-    Onnx__TensorProto *group[max_n_group];
-    size_t n_group = 0;
-    for ( char **name = input_names; name; name++ ) {
-      for (int i = 0; i < n_input; i++) {
-        if ( strcmp(input[i]->name,*name) == 0 ) {
-          group[n_group++] = input[i];
-          break;
-        }
-      }
-    }
-    for ( char **name = output_names; name; name++ ) {
-      for (int i = 0; i < n_output; i++) {
-        if ( strcmp(output[i]->name,*name) == 0 ) {
-          group[n_group++] = output[i];
-          break;
-        }
-      }
-    }
-    for (int i = 1; i < n_group; i++) {
-      if ( group[0]->data_type != group[i]->data_type ) {
-        return FALSE;
-      }
-    }
-    return TRUE;
-  }
+
 '''
 
 

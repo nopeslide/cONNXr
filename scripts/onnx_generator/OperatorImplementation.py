@@ -3,38 +3,38 @@ import os
 
 class OperatorCheckSameType:
     _template_check = '''
-{{ // check constraint '{constraint}'
-  size_t n_tensors = 0;
-  Onnx__TensorProto *tensors[{n_tensors_max}];
-  {find_inputs}
-  {find_outputs}
-  if ( !operator_tensorsAreOfSameType( tensors, n_tensors ) ) {{
-    fprintf(stderr, "tensor type mismatch between: ")
-    for (size_t i = 0; i < n_tensors; i++) {{
-      fprintf(stderr, "%s, ", tensors[i]->name);
+  {{ // check constraint '{constraint}'
+    size_t n_tensors = 0;
+    Onnx__TensorProto *tensors[{n_tensors_max}];
+    {find_inputs}
+    {find_outputs}
+    if ( !operator_tensorsAreOfSameType( tensors, n_tensors ) ) {{
+      fprintf(stderr, "tensor type mismatch between: ")
+      for (size_t i = 0; i < n_tensors; i++) {{
+        fprintf(stderr, "%s, ", tensors[i]->name);
+      }}
+      fprintf(stderr, "\\n");
+      exit(1);
     }}
-    fprintf(stderr, "\\n");
-    exit(1);
   }}
-}}
 '''
 _template_find = '''
-{{ // find {inOrOutput}s for constraint '{constraint}' 
-  char *names = {{ {names} }};
-  n_tensors += operator_findTensors(
-    tensors,
-    names,
-    sizeof(names)/sizeof(*names),
-    {inOrOutput_list},
-    {inOrOutput_length}
-  );
-}}
+    {{ // find {inOrOutput}s for constraint '{constraint}' 
+      char *names = {{ {names} }};
+      n_tensors += operator_findTensors(
+        tensors,
+        names,
+        sizeof(names)/sizeof(*names),
+        {inOrOutput_list},
+        {inOrOutput_length}
+      );
+    }}
 '''
 
     def __init__(self, schema):
         self.schema = schema
 
-    def text(self,prefix=""):
+    def text(self):
         checks = []
         constraint2both = {}
         constraint2input = {}
@@ -77,7 +77,7 @@ _template_find = '''
                     find_inputs=find_inputs,
                     find_outputs=find_outputs
                 ).strip())
-        return prefix + f"\n{prefix}".join(checks).strip()
+        return f"\n".join(checks).strip()
 
     def __str__(self):
         return self.text()
