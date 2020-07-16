@@ -342,6 +342,7 @@ void init_tensor_proto(Onnx__TensorProto *tp){
   uint64_t *uint64_data;
   */
   //tp->base = xx;
+  onnx__tensor_proto__init(tp);
   tp->n_dims = 0;
   tp->dims = NULL;
   tp->has_data_type = 1;
@@ -367,4 +368,28 @@ void init_tensor_proto(Onnx__TensorProto *tp){
   tp->double_data = NULL;
   tp->n_uint64_data = 0;
   tp->uint64_data = NULL;
+}
+
+
+size_t exportTensorProtoFile(const Onnx__TensorProto *tensor, char *fname) {
+
+  struct buffer {
+    ProtobufCBuffer base;
+    FILE *fd;
+  };
+
+  void append(ProtobufCBuffer *buffer,
+              size_t len,
+              const uint8_t *data) {
+    struct buffer *file_buf = (struct buffer *) buffer;
+    fwrite(data, len, 1, file_buf->fd);
+  }
+
+  struct buffer buffer;
+  buffer.base.append = &append;
+  buffer.fd = fopen(fname,"wb");
+
+  size_t size =  onnx__tensor_proto__pack_to_buffer(tensor, &buffer);
+
+  fclose(buffer.fd);
 }
